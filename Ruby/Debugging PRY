@@ -1,0 +1,4 @@
+require "pry"		# beginning of file
+
+
+binding.pry			# into your code where you want to stop the execution	!

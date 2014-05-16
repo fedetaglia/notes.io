@@ -1,0 +1,49 @@
+Blocks, Procs , Lambda
+
+BLOCK {..} or DO .. END 			# Best practice : inline use {}, multilines use do .. end !
+
+A block is a function/method that does not have a name.
+
+why having it? because you're using it only once.
+
+
+PROC (stand for process)
+
+A Proc is a block with a name. "temporary method"
+
+	> if 2 > 5
+	>   proc = Proc.new {puts "yey"}
+	>   else
+	>     proc = Proc.new{puts "oooo"}
+	>   end
+
+	> if 2 > 5
+	>   proc = Proc.new {puts "yey"}
+	>   else
+	>     proc = Proc.new{puts "oooo"}
+	>   end
+
+
+LAMBDA
+Check for the number of input (PROC doesn't)
+return is different inside lambda or procs
+
+	> lam = lambda {|n| puts n * 2}
+	> proc = Proc.new {|n| puts n * 2}
+	> proc.call(1,2)
+		2
+	> lam.call(1,29)
+	ArgumentError: wrong number of arguments (2 for 1)
+
+
+CREATE A METHOD THAT CREATE METHODS
+
+	> def mult_maker(mult)						# this is a method that creates methods
+	>   Proc.new{|x| x * mult}			
+	>   end
+
+	> mult5 = mult_maker(5)						# here I create a method with mult_maker and give it th name mult5
+ 		=> #<Proc:0x00000001d429b0@(irb):108> 
+	
+	> mult5.call(10)							# Now I use my brand-new method to mutliply by 5 the number I want
+ 		=> 50 

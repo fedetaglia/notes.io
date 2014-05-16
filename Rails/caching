@@ -1,0 +1,59 @@
+caching 
+
+store information to avoid download multiple time
+
+- pages
+- actions
+- fragments
+
+
+
+
+-- PAGES --
+
+gemfile
+  https://github.com/rails/actionpack-page_caching
+  gem 'actionpack-page_caching'
+
+create a directory in public where to store the cach files
+
+in config/application.rb
+  # directory in which to put the page-cache
+  config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/page_caches"
+
+
+in config/environment/development
+  change config.action_controller.perform_caching = true
+
+in post controller
+    # on the top of the page
+    caches_page :show
+
+    #add cache expiration in update after the save
+    expire_page action: :show, id: @post.id
+    expire_page action: :show, id: @post.id, format: :json
+
+
+-- ACTION -- 
+
+if any dynamic action NEVER use page caching
+
+gemfile
+  gem 'actionpack-action_caching'
+
+
+
+
+-- FRAGMENT -- 
+
+cach a part of the page
+
+on the html page
+
+<% cache do %>
+  -- whatever to be cached
+<% end %>
+
+
+memcache
+- chace for multiple users

@@ -1,0 +1,34 @@
+internet standard protocol
+
+
+main operation on internet
+
+GET		get
+PUT		edit
+POST	create
+DELETE	delete
+
+
+standard information
+
+100 - informational
+200 - success
+300 - redirection
+400 - client error
+500 - server error
+
+
+200 - success
+301 - moved
+400 - dont understand
+401 - not found
+403 - unutorized
+500 - server crash
+
+----------------------
+
+TERMINAL
+
+curl site_name
+
+give information

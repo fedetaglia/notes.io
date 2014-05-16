@@ -1,0 +1,62 @@
+
+CREATE NEW FILE
+
+f = File.new("students.txt","w")
+
+OPEN EXISTING FILE FOR READING
+f = File.new("students.txt","r")
+
+
+READ EACH LINE AND PUT INTO ARRAY
+students = f.readlines
+after that you have to take away the "/n" after each element
+students.map {|s| s.chomp}
+
+
+RETURN ONLY ONE LINE EACH TIME  
+variable = f.gets
+
+------ 
+
+WRITE INTO FILE
+f = File.new("students.txt","w")
+
+f.puts "something else"
+everything was into the file will be deleted
+
+
+f = File.new("students.txt","a")
+f.puts "something"
+"something" will be added at the end of the file
+
+
+f.flush
+-------
+
+WRITE AND READ
+
+f = File.new("students.txt","w+")
+but it will delete everything as fist action
+
+f = File.new("students.txt","r+")
+it will no cancel everything you have already done previously!
+it will start from the top of the file
+
+f = File.new("students.txt","a+")
+it will no cancel everything you have already done previously!
+it will start from the bottom of the file
+
+
+OPEN
+
+File.open("students.text","r") do |f|
+  students f.readlines.map {&:chomp}
+end
+
+CLOSE FILE
+f.close
+
+save an array into the file
+
+s.each {|s| f.puts s}
+

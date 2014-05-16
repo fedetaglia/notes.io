@@ -1,0 +1,21 @@
+UNDERSCORE.JS
+http://underscorejs.org/
+  is a JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects. 
+
+arr = [1,2,3];
+_.each(arr,function(elem) {console.log(elem);})
+
+_.each(_.range(1, 101), function (i) {
+if ( i%15 === 0) {
+console.log('fizzbuss');
+} else if ( i%5 === 0 ) {
+console.log('buss');
+} else if (i%3 === 0) {
+console.log('fizz');
+} else {
+console.log(i);
+}
+});
+
+minify
+- minify your code! quick to load difficult to read ;-)

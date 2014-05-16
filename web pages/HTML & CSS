@@ -1,0 +1,215 @@
+HTML(Hyper Text Markup language) & CSS (Cascading style sheets)
+
+Structure of the page!
+
+
+FORM 
+
+GET         use when you need an information from server
+POST        use when you make some changes into the servers (save/modify info)
+
+<html>
+    <head>
+         .. information about the page .. 
+         <title></title>    <!-- displayed at top of browser -->
+         <meta >            information about page
+
+    </head>
+
+    <body>
+        .. actual page ..
+        
+        <h1>header</h1>
+        
+        <p>paragraph</p>
+        
+        <div>container</div>
+        
+        <img src="">
+        
+        <table></table>
+
+        <form></form>
+    </body>
+</html>
+
+
+--- CSS ---
+
+how to import
+
+<stylesheet>                        import external file
+
+<style type="text/css"></style>     inside the single pages
+
+<p style="color:blue;"></p>         inline
+
+
+p is the selector
+{} is the decoration
+
+p {
+}
+
+
+different type of selectors : 
+
+tags
+
+.my_class
+u can add more than 1 class foreach item
+
+#my_id
+
+
+.my_class p {}          all the paragraphs inside the my_class class
+ul li:first {}          only the first item on ul list
+
+a {color: black}        all link are default black
+
+a:link {}               default
+a:hover {color:pink}    turn pink when you pass over the link            
+a:visited {}            you have been there
+a:active {}             the active one
+
+
+#list > li              select the list id but not the nested items
+
+
+h3 + p {                select only the p in the same level of h3
+}
+
+
+.syleafter ~ h2         every item after h2
+
+*{}
+
+img[alt="cat"]          the alt is "cat"
+img[*alt="cat"]         have "cat" inside the alt
+img[$alt="them"]        ends in "them"
+
+
+a[href^="http"]        starts with "them"
+
+#test p:fist-child      take the fist child of "test" id
+#test p:last-child      take the last child of "test" id
+
+decorations: 
+
+color                   font color
+background              background color
+text-align              align text
+font-family             change font
+font-weight             bold
+text-decoration         none; underline;
+
+margin                  space between border and rest of the page
+margin top-down right-left
+margin top right bottom left
+
+
+padding
+border
+
+img
+float:left;
+
+
+
+yahoo reset sylesheet
+normalize.css
+
+-------
+
+container selectors 
+
+div
+
+span
+
+------
+
+
+.fixed {
+    width: 200px;
+    heigth :200px;
+
+}
+
+.fuid {
+    width: 50%;
+    heigth :200px;
+}
+
+.responisve {
+    min-width: 200px;
+    max-width: 400px;
+    heigth :200px;
+}
+
+.autoscalecells {
+    width: auto;
+    height: auto;
+}
+
+.overflowauto {
+    overflow: hide;
+}
+
+.overflowauto {
+    overflow: auto;
+}
+
+.overflowauto {
+    overflow: hide;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+
+span {
+    display:block;             span vengono messi in blocchi diversi (change line)
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    background: lime;
+
+}
+
+*, html, body {
+    padding : 0;
+    margin : 0;
+}
+
+
+absolute position               position defined abolutely with the top right of the page
+
+relative position               position defined relatively to parents item
+
+fixed   position                item does not move from the page
+
+.box {
+position: relative;         
+top: 20px;
+left: 100px;
+}
+
+.box {                          it take it out of parent item
+position: absolute;
+top: 20px
+}
+
+.fixed {
+    position: fixed;
+    top: 10px;
+    right: 140px;
+}
+
+
+z-index                         The z-index property specifies the stack order of an element.
+                                An element with greater stack order is always in front of an element with a lower stack order.
+
+                                default value is 0.
+

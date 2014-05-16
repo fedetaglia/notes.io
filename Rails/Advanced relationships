@@ -1,0 +1,23 @@
+___ ADVANCED____RELATIONSHIPS____
+
+-- POLYMORPHICS ASSOCIATION --
+
+
+- post
+- weblink
+
+- comments
+
+comment could belongs to post or weblink. how do we do?
+
+commentable_type
+commentable_id
+
+
+on migration write commentable:references
+
+add polymorphic: true on migration
+
+
+-- SELF JOIN --
+rails g migration AddReferredByToUsers referred_by:references

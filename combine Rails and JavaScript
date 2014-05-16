@@ -1,0 +1,14 @@
+-- combine Rails and JavaScript -- 
+
+-- application.js
+
+//= require underscore
+//= require backbone
+
+
+
+Into controller render to JSON to answer to JavaScript request
+
+
+
+

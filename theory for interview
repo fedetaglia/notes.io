@@ -1,0 +1,160 @@
+The Rails philosophy includes two major guiding principles:
+
+1) DRY - "Don't Repeat Yourself" - suggests that writing the same code over and over again is a bad thing.
+2) Convention Over Configuration - means that Rails makes assumptions about what you want to do and how you're going to do it, rather than requiring you to specify every little thing through endless configuration files.
+
+
+MVC design paradigm - Model View Controler
+
+Callbacks
+Active Record callbacks allow you to attach code to certain events in the life-cycle of your models
+
+ACTIVE RECORD
+
+  AR is the M in MVC. The model which is the layer of the system responsible for representing business data and logic. AR facilitate the creation and use of objects whose data requires persistent storage to a DB. 
+
+  AR let us : represent models, associations between them, validation and perform db operation.
+
+
+
+1) RESTFUL ARCHITECTURE
+
+  RESTFUL architecture (REpresentational state transfer) is an implementation of CRUD for web application.
+  
+  CRUD is an acronym for Create, Read, Update and Delete that are the 4 basic function that can be performed over resources.
+
+  In a resful web application I can access and manipulate the resources using the resource URL and the HTTP methods (GET, POST, PUT, DELETE ).
+
+  Having the users resources
+
+  with a post request on users/:id I tell to server that I want to CREATE the id resource
+  with a get request on users/:id URL I tell to server that I want to READ the id resource
+  with a put request on users/:id URL I tell to server that I want to UPDATE the id resource
+  with a delete request on users/:id URL I tell to server that I want to DELETE the id resource
+
+------
+
+2) ALGORITHM complexity
+
+  Algorithm complexity is concerned about how fast or slow a particular algorithm performs.
+  We define complexity as numerical function T(n) versus the input size n.
+
+  to remove complexity remove loops
+
+------
+
+
+3) VARIABLES - instance vs class vs global variable
+
+  An INSTANCE variable is a variable defined in a class for which each object of the class has a separate copy or instance.
+
+  ruby syntax : @instance_variable
+
+  A CLASS variable is a variable defined in a class of which a single copy exists regardless of how many instances of the class exist.
+
+  ruby syntax: @@class_variable
+
+
+  A GLOBAL variable is a variable with a global scope, meaning that it is visible throughout the program.
+
+  ruby syntax: $global_variable
+
+  A LOCAL variable is a variable that is given local scope. 
+
+  ruby syntax: local_variable
+
+
+------
+
+4) RESOUCE ATTRIBUTES / ASSOCIATIONS
+
+  A model attribute is like an instance variable
+
+  It is commmon associate resource to make common operation simpler.
+  An association is a connection between two models that in ruby is carried on by Active Record. 
+
+  For example consider an application that include a model for customers and a model for orders.
+  Each customer can have many orders.
+
+    - belongs_to
+    - has_one
+    - has_many
+    - has_many :through
+    - has_one :through
+    - has_and_belongs_to_many
+
+------
+
+5) RSPEC
+
+  RSpec is a testing tool. 
+  Reflect Behaviour Driven Development
+
+  RSpec uses the words "describe" and "it" so we can express concepts like a conversation
+
+    context '#get_recipe_from_API' do 
+      it ('should call generate_recipe if httparty return 200') do
+        allow(RecipeFetch).to receive(:generate_recipe).and_return('whatever')
+        allow(RecipeFetch).to receive(:yummly_url).and_return('whatever')
+        allow(HTTParty).to receive(:get).and_return(double({code: 200}))
+        expect(RecipeFetch).to receive(:generate_recipe)
+        RecipeFetch.get_recipe_from_API('recipe_id')
+      end
+
+
+------
+
+6) MIGRATION
+
+  Migration is a feature in Active Record that allow you to evolve your db schema over time.
+  The changes made with migration are database independent.
+
+------
+
+7) POLYMORPHIC associations
+  
+  With polymorphic association a model can belong to more than one other model on a single association.
+
+
+  For example you can have picture for employee model or a product model.
+
+  Picture   belong_to :imageable, polymorphic: true
+  Employee  has_many :picture, as :imageable
+  product   has_many :picture, as :imageable
+
+  pictures table will have 2 columns: 
+    t.integer :imageable_id
+    t.string  :imageable_type - in this case will be employee or product
+    in migration I will only have: 
+    t.references :imageable, polymorphic: true
+
+------
+TDD (Test-Driven Development) in its simplest form is just this:
+
+Write your tests
+Watch them fail
+Make them pass
+Refactor
+Repeat
+
+8) BDD Behaviour driven development
+
+write test describing the beahviour of the application
+
+  RSPEC is build to match BDD
+  RSpec uses the words "describe" and "it" so we can express concepts like a conversation
+
+  context '#get_recipe_from_API' do 
+    it ('should call generate_recipe if httparty return 200') do
+      allow(RecipeFetch).to receive(:generate_recipe).and_return('whatever')
+      allow(RecipeFetch).to receive(:yummly_url).and_return('whatever')
+      allow(HTTParty).to receive(:get).and_return(double({code: 200}))
+      expect(RecipeFetch).to receive(:generate_recipe)
+      RecipeFetch.get_recipe_from_API('recipe_id')
+    end
+ex
+
+9) TEST FOR JAVASCRIPT
+
+  Jasmine --> BDD  Behaviour driven Development
+  Jasmine can be used by itself; or you can integrate it with a Rails project. 

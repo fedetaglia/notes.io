@@ -1,0 +1,3 @@
+send mail with rails
+
+rails g mailer UserMailer / PostMailer

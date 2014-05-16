@@ -1,0 +1,245 @@
+SHOW TO CREATE A NEW APPLICATION
+
+1. create the app folder
+
+rails new application_name --database=postgresql
+
+
+2. create the db for application_name
+
+subl config/database.yml
+make sure of dbname and user-password
+
+rake db:create 
+
+3.
+Gemfile
+
+
+add these 2 gems 
+
+gem 'execjs'
+gem 'therubyracer'
+gem 'pry'
+gem 'pry-development'
+
+4.
+rails  s        start the server
+
+
+on terminal : 
+
+rake db:create    CREATE db
+rake db:drop      DELETE db
+rake db:migrate   MIGRATE db allow changes db schema using Ruby
+rake db:seed      POPULATE db from /db/seed.rb
+rake db:rollback
+
+
+rake db:schema:load CREATE db from the schema not from migrations.
+                    ex: have too many migrations!
+
+
+rails generate migration create_artists
+rails generate migration create_paintings
+rails generate controller artist_controller
+rails generate model Artist -> generates migration and model
+
+
+
+rails server    RUN RAILS SERVER
+rails console   RUN AN APP CONSOLE
+
+
+
+in db-migrate there is a new file to create a db
+
+  you can create the all table fileds
+  t.timestamps create 2 column one created_at and one updated_at
+
+
+rake routes show all the available routes for your app
+
+go into config -> routes.rb to add routes
+ex.
+  resources :artists
+
+
+  if you want default population on your app
+
+COLUMNS 
+t.integer :max_capacity, default:20, null:false
+
+ADD FOREIGN KEY
+in a new migration :
+add_reference :animals, :shelter, index:ture
+
+or
+
+inside the table creation animals :
+t.references :shelter
+
+
+
+POPULATE
+in db -> seeds.rb file add value then into terminal 
+like categories or nationalities
+
+Artist.destroy_all    runs the validation before deleting everything
+
+rake db:seed
+
+
+MANY_TO_MANY
+
+rake db:migration createJoinTableCourseStudent course student
+
+if I have course id into sutdents table and want to create jointable without lose all the data in my db i woudl do something like : 
+
+def change
+  students = Student.select(:id, :course_id).all
+  remove course_id from course
+  
+  create_join_table :courses, :students do |t|
+    #here would insert the index for both :courses and :students
+  end
+
+  students.each do |s|
+    s.courses << Course.find(student.course_id)
+  end
+
+end
+
+
+
+FOLDER STRUCTURE
+
+
+public all the static pages here
+
+
+app/assets has 3 folder for images javascripts stylesheets
+
+
+rails g scaffold Student name:string description:text image_url:string email:string
+
+
+SCAFFOLD CREATE
+
+- db migrations
+- config rutes
+- models
+- cotrollers
+- views
+- helpers
+
+
+
+rails g scaffold Course title:string description:text max_capacity:integer
+rails g scaffold Student given_name:string family_name:string age:integer course:references
+rails g scaffold Subject title:string course:references
+rails g scaffold Result value:integer student:references subject:references
+
+
+
+
+
+RENDERING / LAYOUT
+
+def show
+  render action:"my_action"     to change action name
+  render layout:"my_layout"     to change layout
+end
+
+
+
+
+REST
+Representational state transfer
+http://en.wikipedia.org/wiki/Representational_state_transfer
+
+
+
+NESTED ROUTES
+http://edgeguides.rubyonrails.org/routing.html
+
+only need nesting routes when creating a new project, all other actions I can use the only project ID.
+
+resources :students do
+  resourses :projects {shallow:true }
+  end
+end
+resources :projects, only: [:index]
+
+
+into projects controller
+before_action :set_student
+
+
+
+private
+
+
+def set_student
+  if params[:student_id].present?
+    @student = Student.find_by_id params[:student_id]
+  else
+    @project.student
+  end
+end
+
+
+
+VIEW HELPERS
+
+number_to_currency(var, :precision => 1, unit => "€")    € var
+number_to_human(1000)                                    get readble
+number_to_human_size(1000)                               filesize
+number_to_percentage(10, :precision => 0)                10%
+number_with_delimiters(1000)                             1,000
+number_with_precision()
+
+
+<tr style="color:<%= cycle("red","grey")%>">
+
+I have <%= pluralize(course.subjects.count%>, 'subject')
+
+
+<%= truncate('blablablalvaadasda', lenght:10)
+
+<%= highlight('you serched for rails','rails') %>
+
+
+<%= stylesheet_link_tag "" %>
+<%= javascript_include_tags%>
+<%= csrf_meta_tags%>
+
+
+FORM HELPERS
+http://edgeguides.rubyonrails.org/form_helpers.html
+
+
+
+<%= form_tag("/search", method:'get') do %>
+  
+  <%= label_tag(:q, "Search")%>
+  <%= text_field_tag(:q)%>
+  <%= submit_tag('Search')%>
+<%end%>
+
+  <%= f.select :course_id, option_for_select(Course.all.map{|course| [course.title, course.id]})%>
+  <%= f.collection_select :course_id, Course.all, :id, :title %>
+
+
+BASIC AUTHENTICATION
+
+http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html
+
+http_basic_authenticate_with name:'name', password: 'password', except: 'index'
+
+
+community@reinteractive.net
+
+
+
+value = params[:value] || "something"

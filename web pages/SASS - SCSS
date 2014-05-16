@@ -1,0 +1,58 @@
+SASS / SCSS
+
+syntactic awsome style sheet
+
+
+-- SCSS --
+
+mv application.css application.css.scss
+
+- nesting elements
+- nesting &:hover
+- adding variable (colour schema for all the website)
+- can add function to call pieces of code (maybe create a new file and put inside all the functions )
+- create class extending another class
+
+--  new file 'mixins.css.scss'
+
+@mixin border-radius($radius){
+  -webkit-broder-radius: $radius
+  -moz-border-radius: $radius
+  -ms-broder-radius: $radius
+  -border-radius: $radius
+}
+
+ -- scss file
+
+@import 'mixins';
+
+$main_colour : blue
+$light_colour : $main-colour + #333
+
+
+.notification {
+  -- blablabla
+}s
+
+.error {
+  @extend .notification  
+}
+
+
+
+#myid {
+  @include border-radius(10px)  
+  
+  h1 {
+  -- style for h1 inside the #myid
+  color: $main_colour;
+  
+    &:hover{
+    color: $another_colour;
+    }
+  }
+} 
+
+p:before{
+  content: "this content is added #{ 5 + 3 }"
+}

@@ -1,0 +1,145 @@
+CRUD
+
+Create    INSERT
+Read      SELECT
+Update    UPDATE
+Destroy   DELETE
+
+
+store information in table
+
+table is a set of data
+
+CREATE TABLE table_name (
+  id SERIAL4 PRIMARY KEY
+  col_name col_type
+  col_name col_type
+  col_name col_type
+  col_name col_type
+);
+
+NOT NULL
+UNIQUE
+
+
+CREATE INDEX to increase speed of search
+
+--------------------
+
+DATATYPE
+http://www.postgresql.org/docs/8.4/static/datatype.html
+
+SERIAL4
+SERIAL 
+which is the difference
+
+INTEGER
+  smallint
+  integer
+  bigint
+
+FLOAT
+  decimal
+  numeric
+  reals
+  double
+
+BOOLEAN (true,false,null)
+
+VARCHAR(20)
+
+CHAR(20)        blank spaces at the end if less than 20 char
+
+TEXT
+
+date/time
+
+DATE            just the date, not the time
+TIMESTAMP       date and time, without time zone
+TIME            just the time not the date
+INTERVAL        difference bw 2 times or 2 dates
+
+--------------------
+
+http://www.postgresql.org/docs/8.0/static/sql-altertable.html
+
+ALTER TABLE people DROP COLUMN course_id
+ALTER TABLE people ADD COLUMN course_id INTEGER REFERENCES courses(id);
+ALTER TABLE courses RENAME COLUMN title TO name;
+ALTER TABLE units RENAME TO subjects;
+
+--------------------
+
+INSERT INTO courses (name) VALUES 'front end'
+
+UPDATE people SET course_id = 3 where id = 7;
+
+SELECT people.given_name, people.surname, courses.name
+FROM people
+JOIN courses ON people.course_id = courses.id;
+
+
+SELECT
+FROM
+LIMIT 3 OFFSET 3
+
+take 3(limit) and start from the 3rd one(offset)
+
+
+people JOIN courses         take only people that have a specified course
+people LEFT JOIN courses    take all people also if they don't have a course
+people RIGHT JOIN courses   take all course alsto if they don't have any student
+
+INNER JOIN
+
+FULL JOIN ?
+
+http://www.postgresql.org/docs/8.2/static/queries-table-expressions.html
+http://www.codeproject.com/KB/database/Visual_SQL_Joins/Visual_SQL_JOINS_orig.jpg
+---
+
+
+SQL <- query language
+
+
+select * from people;
+select * from people where surname LIKE '%s%';
+select count(*) from people;
+select sum(age) from people;
+
+
+PSQL
+
+create user fedetaglia;
+alter role fedetaglia createdb;
+
+
+sudo su - postgres
+
+alter role fedetaglia password 'password';
+\q              to exit
+\?              to see help
+\d table_name   describe table
+
+create db 
+createdb students
+
+psql students <- enter into db
+
+
+postgres@fedetaglia:~$ exit
+
+psql -l                    List of databases
+students=> \l           <- List of databases
+
+students=> \c students  <- go to other database
+
+
+
+
+MAC
+postgres.app
+
+
+UBUNTU
+https://www.digitalocean.com/community/articles/how-to-install-and-use-postgresql-on-ubuntu-12-04

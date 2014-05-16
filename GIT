@@ -1,0 +1,61 @@
+
+GITHUB
+
+user id : 	fede.tagliabue@gmail.com
+password : 	same as linux user !
+
+
+FORK	(copy on github)
+CLONE	(copy on pc)
+
+
+cd doc/ga/
+git clone (ssh clone URL)
+
+-----
+GITHUB DOWNLOAD HOMEWORK
+
+ON TERMINAL
+
+cd /home/fedetaglia/Documents/ga/homework/wdi_sydney_3/homework
+git pull upstrem master
+
+ctrl+X
+
+-----
+
+GITHUB UPLOAD HOMEWORK
+
+ON TERMINAL
+
+
+	cd /home/fedetaglia/Documents/ga/homework/wdi_sydney_3/
+	
+	LOCAL COMMAND
+	git status					# check the status - if there's something different from the last commitment
+	git add .					# get it ready to commit whaterer is changed
+	git add -u
+	git commit 					# put into local repository whatever is in add . status
+
+
+
+	PUSH FROM LOCAL TO MY COPY ON GITHUB
+
+	git push origin master		# upload to master repository : MY FORK OF DANIEL REPOSITORY
+
+
+ON GITHUB
+
+	Pull request 										# on my forked repository, create the request to add my changes to Daniel's repository
+
+	click to create a pull request for this repository 	# check changes, if they are in my folder
+
+	SEND PULL REQUEST 									# send request
+
+
+------
+
+
+
+git pull upstream master --> from github to my pc
+git push upstream master --> from my pc to github

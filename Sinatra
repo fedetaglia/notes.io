@@ -1,0 +1,63 @@
+gem install sinatra
+
+
+
+INTO THE MAIN FILE
+
+require 'sinatra'
+require "sinatra/reloader" if development?	# allow me not to restart sinatra server each time I make changes in main.rb
+
+helpers do
+	here can put method in common for all the get
+end
+
+
+get "/" do 
+	# here my page
+end
+
+puts paramss.inspect     <-- puts parameters on terminal
+
+AS RESULT OF ruby main.rb YOU HAVE THE PORT
+
+localhost:port_given
+
+
+
+if 
+
+<option selected="selected" if params[:param] == "" > </option>
+keep selection when refreshing the pages
+
+
+
+-----
+
+HTTPARTY send a get request to another website
+
+require "httparty"
+answer = HTTParty.get(search)
+
+----
+
+URI
+
+check for strange character into a string and give you back a string formatted for URL
+
+require "uri"
+search = URI.escape(string)
+
+----
+
+JSON (JavaScript Object Notation) is a lightweight data-interchange format.
+  
+  @movie = JSON[answer]
+
+change your JSON string into an hash
+
+----
+PONY
+
+send email with sinatra
+
+sudo gem install pony

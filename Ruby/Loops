@@ -1,0 +1,46 @@
+LOOPS
+
+WHILE
+
+2.1.0 :002 > while (a < 100) do
+2.1.0 :003 >     puts "Number : #{a}"
+2.1.0 :004?>   a += 2
+2.1.0 :005?>   end
+
+---
+while (exp)
+	"text"
+end
+
+
+begin
+	"text"
+end while(exp)
+
+----
+WHILE LOOP goes until condition is 
+UNTIL LOOP goes until condition is false
+
+----
+
+
+FOR
+for i in 0..5
+   puts "Value of local variable is #{i}"
+end
+
+
+----
+
+(0..5).each do |i|
+   puts "Value of local variable is #{i}"
+end
+
+
+
+
+RANDOM RANGE 
+
+rand(10) 		-> from 0 to 10 .. NOT including 10
+rand(0..10)		-> from 0 to 10 .. includig 10
+rand(0...10)	-> from 0 to 10 .. NOT including 10

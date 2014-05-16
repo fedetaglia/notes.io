@@ -1,0 +1,223 @@
+
+ORM - Object Relationship Mapping
+
+Mapping column of database into ruby datatype
+
+ActiveRercord is the ORM we use!
+
+DECLARATION
+-----------
+
+require 'active_record'
+require 'active_record/validations'
+
+ActiveRecord::Base.establish_connection(
+  :adapter => 'postgresql',
+  :username => 'fedetaglia',
+  :database => 'blog'
+  )
+
+class Comment < ActiveRecord::Base
+  validates :author,
+    :presence => { :message => 'You need to insert an author'},
+    :length => {
+      :maximum => 255, :too_long => 'author too long : should have max 255 characters',
+      :minimum => 3,:allow_blank => true, :too_short => 'author too short : should have min 3 characters', 
+    }
+
+  validates :body,
+    :presence => { :message => 'You need to insert a comment'},
+    :length => { 
+      :maximum => 300, :too_long => 'Message too long : should have max 300 characters',
+    }
+end
+
+--------
+
+mvc module view console architecture
+
+
+
+class Person < ActiveRecord::Base
+end
+
+[2] pry(main)> Cat.all.to_sql
+=> "SELECT \"cats\".* FROM \"cats\""
+
+
+
+ActiveRecor::Base.logger = Logger.new(STDOUT)
+
+
+SELECT
+
+
+cat = params[:id]
+@cat = Cat.where(:id => cat).first        OK
+@cat = Cat.where("id =?",cat).first       OK
+# @cat = Cat.where("id = #{@cat}").first  BAD!!!
+
+
+
+people = Person.all
+people = Person.order(:surname).all
+
+people.size
+
+women = Person.where(:gender => 'F').all
+adult = Person.where("age =?",age)
+
+adult.find_by_surname("jones")
+adult.find_all_by_surname("jones")
+adult.where(:surname =>"jones").all
+
+jane = Person.find 6      find person with id=6
+
+
+puts people.attributes
+
+people.each do |person|
+  puts "name: #[person.given_name] #{person.family_name}"
+end
+
+
+
+UPDATE
+
+jane.age = 24
+jane.save                           salva le modifiche nel db
+jane.update_attributes
+  (:age => 24, :surname ="doe")     modifica e salva le modifiche nel db
+jane.update_attributes
+  (age: 24, surname: "doe") 
+
+
+
+CREATE NEW
+
+new_person = Person.new
+new_person.surname ="smith"
+new_person.given_name ="jim"
+new_person.age = 27
+new_person.save           save into db
+
+new_person = Person.new(:given_name => "joe",:surname =>"blog")   create variable 
+new_person = save                                                 save into db
+
+new_person = Person.create(:given_name => "joe",:surname =>"blog") create variable and save into db
+
+
+DELETE
+
+new_person.delete              delete person from db
+
+
+
+Model         data and how to manipulate
+Views         display
+Controller    control what to do
+
+
+
+
+VALIDATIONS
+
+validates :name, 
+    :presence => true,
+    :uniqueness => true,
+    :length => is (2..255), :message => 'error name, try again'
+
+  # validates :card_number, 
+  #   :presence => 
+
+  #  validates :password, 
+  #    :on => :create, 
+  #    :presence => true
+  
+  # validates :age, 
+  #   :numerically => { :only_integer => true, :greather_than_or_equal_to => 18, :allow_black => true} 
+
+  # validates :gender, 
+  #   :inclusion => {in => ['m','f']}, 
+  #   :message => "%{value} is not a valid gender, pls enter f/m"
+
+
+---------------
+
+CALLBACKS
+
+better to keep checks inside the method rather than on the main code.
+
+
+
+class Post < ActiveRecord::Base
+  belong_to :post
+
+end
+
+
+
+class Post < ActiveRecord::Base
+ 
+ has_many :comments
+   
+
+  before_update :refresh_updated_date
+  before_create :set_created_at
+  
+  def refresh_updated_date
+    self.updated_at = Time.now
+  end
+
+  def set_created_at
+    self.created_at = Time.now 
+  end
+end
+
+now every time I update a value it run the refresh_updated_date method
+now every time I create a value it run the set_created_at method
+
+i can multiple method like :
+
+before_validate
+-> validation
+after_validate
+before_create
+-> create
+after_create
+
+
+belong_to (has the x_id column)
+
+has_many
+has_one
+
+
+-------------
+
+MANY TO MANY RELATIONSHIP -> needs a 'join table' (will have only 2 columns : course_id,students_id)
+
+HABTM
+
+Student has_and_belongs_to_many :courses
+Course has_and_belongs_to_many :students
+
+table courses
+|has_many   A belongs_to
+V           |
+table courses_students (course_id references courses(id), student_id refereces students(id))
+|belongs_to A has_many
+V           |
+table students
+
+
+s4 = Student.create(:name..., :courses => [c1,c2])    association creation
+
+s4.courses << c3
+
+s4.save
+
+
+students.create_course(:name 'back end');
+
+""

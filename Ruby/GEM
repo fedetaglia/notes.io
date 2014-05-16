@@ -1,0 +1,20 @@
+GEM 
+
+gem list
+
+gem list pry 
+
+
+gem install pry
+gem install pry-debugger
+
+
+PRY is similar to irb but with some different features.
+- different color for 
+
+
+
+REQUIRE FILE INTO IRB
+load 'main.rb'
+
+require './main.rb'

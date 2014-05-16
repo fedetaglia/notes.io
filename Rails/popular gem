@@ -1,0 +1,35 @@
+
+images upload
+  paperclip
+  carrierwave
+
+asyncro
+  DELAYEDJOB
+  SIDEKIG
+
+
+scheduling process
+  corn
+  whenever
+
+authentication
+  devise
+
+
+XMLparsing
+  nokogiri
+
+pdf
+  prawn
+
+json
+  jbuilder
+
+images
+  resizeeye
+  imagemagic
+
+
+
+
+  myfavouriteexception

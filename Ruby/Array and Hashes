@@ -1,0 +1,120 @@
+Array and Hashes
+
+
+ARRAY
+
+ordered list
+				change?		return? 	description
+a[0..-1]								from index 0 to index -1, that is the last one
+a.first																							
+a.last
+a.pop				Y					pop out the last
+a.push(:some)		Y					push in at last position
+a << (:tom)			Y					push in at last position
+a.shift				Y					pop out the first
+a.unshift(:tom)		Y					push in at first position
+a.flatten			N					if nested array and give a plane array
+a.reverse			N					reverse the order
+a.delete_at(#)		Y		del item	delete the index # and retur it
+(1..3).to_a			Y					turn into array the range [1,2,3]
+a.include?(x)		N		TRUE/FALSE	return true if a include x, false if not include x
+a.sort									order alphabetical
+a.sort_by{|a| a.length}					specific order
+a.shuffle!								random order
+a.each {|x| ..}		N					for each value into the array do something, and return the resulting array
+a.map {}			N					same as each but does not return nothing
+a.uniq       							return array with unique value
+a.length			N 					return number of items
+a.index(#)
+
+[ARRAY].METHOD
+
+[1,2,3,4,5].select {|i| i.odd?}			take every odd in the array
+[1,2,3,4,5].find {|i| i.odd?}			take the first one that is odd
+[1,2,3,4,5].reject {|i| i.odd?}			take all the one that are not odd
+[1,2,3,4,5].all? {|i| i.odd?}			give True if is verified for all the values inside the array, otherwise FALSE.
+
+.count
+.length
+.size
+.max
+.min
+.first
+.last
+.select								# give the value for which is verified a statement
+.reject								# opposite to .select
+.include? x							# give TRUE or FALSE if x is or not included into the ARRAY
+.any? {|x| x.to_s[0] == "j"}		# give TRUE if there is a value starting with "j"
+.find_all {|x| x.to_s[0] == "j"}	# give an array with the value of all starting with "j"
+.sort
+.reverse
+.map {|x| x + 2}					# operate to any value inside array. Do not change the value of array but return a copy
+.reduce(:+)							# reduce array to 1 value (:+) = summing
+.inject
+
+	number.inject(3) {|sum,n|
+		p "n is : #{n} sum is : #{sum}"
+		p "n is : #{n} sum is : #{sum}"
+		}
+	"n is : 1 sum is : 3"
+	"n is : 2 sum is : 4"
+	"n is : 3 sum is : 6"
+	 => 9
+
+	number.inject({}) {|the_hash, n|
+	    the_hash[n] = n
+	  the_hash
+	  }
+	 => {1=>1, 2=>2, 3=>3} 
+
+
+ .cycle(n) {|i| puts i}				# operate somethig for all the values for n times
+
+	 cycle_enum = arr.cycle
+	 cycle_enum.next
+	 cycle_enum.next
+
+.partition {|x| x.even?}			# make an array of array that is the partition of the array
+	even_things, odd_things = number.partition{|x| x.even? }
+
+
+a,b = [1,2,3]						# assign value to variable from array
+
+
+
+require "fileutils"
+
+students = ["donald trump", "mark Green", "Peter pan"]
+
+students.each do { |student|
+		folder_name = student.gsub(" ","_").downcase
+		FileUtils.mkdir folder_name
+		FileUtils.chdir folder_name do
+			FileUtils.touch ".gitkeep"
+		end
+end
+
+
+}
+
+
+
+
+---------------------------------------------
+
+HASHES
+
+my_hash = {}
+
+
+my_hash.keys
+my_hash.values
+
+my_hash.key.each do |key|
+
+my_hash[:bold] = TRUE OR FALSE
+
+my_hash.delete(key)
+
+my_hash.delete_if {|k,v| value == TRUE}
+

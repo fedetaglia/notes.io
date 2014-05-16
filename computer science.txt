@@ -1,0 +1,28 @@
+binary search <- splitting in half NEED ORDERED COLLECTION
+
+big O notation
+
+
+
+
+insertion sort
+selection sort
+bubble sort
+merge sort
+
+
+recursion
+
+call function itself from inside
+ex. 
+
+def countdown(n)
+  if n is 0 
+    puts loop end
+  else
+    puts n
+    countdown(n-1)
+  end
+end
+
+countdown(10)

@@ -1,0 +1,200 @@
+OBJECTS AND CLASSES
+
+
+is_a or has_a
+
+if is_a? you can have inheritance
+if has_a? it is an attribute
+
+
+variable.Classes		I can see which the class is
+Class MyClass			How to define class
+
+end
+
+class MyClass
+	def eye_colour
+		@eye_colour
+	end
+	def eye_colour=(new_eye_colour)
+		@eye_colour = new_eye_colour
+	end
+end
+
+
+class MyClass
+	attr_accessor :hair_colour # per vedere var dall'esterno (?)
+end
+
+> class MyClass
+>   def initialize(eyes,hair)
+>     @eye_colour = eyes
+>     @hair_colour = hair
+>   end
+> end
+
+> class MyClass
+>   def initialize(eyes="brown",hair="brown")
+>     @eye_colour = eyes
+>     @hair_colour = hair
+>     end
+>   end
+
+I CAN ADD METHOD TO MY CLASS
+
+> class MyClass
+>   def say_hi
+>     puts"hi"
+>     end
+>   end
+
+METHODS CAN TAKE ARGUMENTS
+
+> class MyClass
+>   def say(msg)
+>     puts msg
+>   end
+> end
+ => :say 
+> person7.say("whatever")
+whatever
+
+
+HOW TO EXTEND CLASS FUNCTIONALITIES
+inheritance
+
+Take the functionalities from another class ("superclass")
+
+class Mammal < Animal
+
+end
+
+
+If you have the same method on the two class the "closer" will overwrite the "higher"
+
+you can add methods to existing class just typing
+
+class MyClass
+	def NewMethod
+	..
+	end
+end
+
+
+----- PROF COPY ----
+
+
+
+# Define a class
+class MyClass
+end
+
+# Instantiate the class
+my_class = MyClass.new
+
+
+
+
+# Define a class with an attribute with set and get methods
+class MyClass
+
+  def attribute_example=(attribute_example)
+    @attribute_example = attribute_example
+  end
+
+  def attribute_example
+    @attribute_example
+  end
+
+end
+
+
+# Instantiate the class and use set and get method
+my_class = MyClass.new
+my_class.attribute_example = 27
+my_class.attribute_example
+
+
+
+
+# Define a class with an attribute with attr_accessor
+class MyClass
+    attr_accessor :attribute_example
+end
+
+# Instantiate the class and use set and get method
+my_class = MyClass.new
+my_class.attribute_example = 23
+my_class.attribute_example
+
+
+
+
+
+# Define a class with an attribute with initializer
+class MyClass
+    attr_accessor :attribute_example
+
+    def initialize(attribute_value)
+        @attribute_example = attribute_value
+    end
+
+end
+
+
+# Instantiate the class using .new
+my_class = MyClass.new(22)
+my_class.attribute_example
+
+
+
+
+
+# Inheritance
+
+# Define an parent Animal class
+class Animal
+  def move
+    puts "i can move!"
+  end
+end
+
+# Define a Mammal class that inherits from Animal
+class Mammal < Animal
+  def eat
+    puts "i can eat! yum yum yum"
+  end
+  def speak
+    puts "i can speak"
+  end
+end
+  
+# Define a Monkey class that inherits from Mammal
+class Monkey < Mammal
+  def swing
+    puts "i can swing!"
+  end
+  def speak
+    puts "HoWwOo WHoWo"
+  end
+end
+
+# Define a Dog class that inherits from Mammal
+class Dog < Mammal
+  def speak
+    super
+    puts "WHOOF"
+  end
+end
+  
+# Instantiate a Monkey and show off what it can do
+timmy = Monkey.new
+timmy.move
+timmy.eat
+timmy.swing
+
+# Instantiate a Dog and show off what it can do
+sammy = Dog.new
+sammy.move
+sammy.eat
+sammy.speak

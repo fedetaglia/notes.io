@@ -1,0 +1,15 @@
+AUTHENTICATION - gem devise or build in in rails 
+
+recognize that you have a user
+
+
+
+
+
+
+
+
+
+AUTHORIZATION - gem cancan
+
+what you can do
