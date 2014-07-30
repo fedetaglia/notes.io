@@ -1,0 +1,14 @@
+- capistrano gem in gemfile and bundle
+- brew install ssh-copy-id to save ssh password
+
+A) to add the project ssh key
+
+ssh-copy-id deploy@websiteurl
+
+B) To deploy 
+
+1)
+git push orgin master
+
+2)
+cap production deploy
