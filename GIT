@@ -1,4 +1,4 @@
-
+n
 GITHUB
 
 user id : 	fede.tagliabue@gmail.com
@@ -30,7 +30,7 @@ ON TERMINAL
 
 
 	cd /home/fedetaglia/Documents/ga/homework/wdi_sydney_3/
-	
+
 	LOCAL COMMAND
 	git status					# check the status - if there's something different from the last commitment
 	git add .					# get it ready to commit whaterer is changed

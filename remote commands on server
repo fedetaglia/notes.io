@@ -1,0 +1,50 @@
+# anchors
+
+
+# enter into server
+ssh deploy@
+thelearningchannel.com.au
+
+# show the folders: 1 of them will be railsapp
+ls
+
+# go into the rails app folder
+cd railsapps
+
+# show all the app that are present
+ls
+
+# enter into the app you want
+cd emberin
+
+# enter into the current version
+cd current
+
+
+THINGS YOU CAN DO 
+
+# 1) show a live log
+sudo allah log elearning_unicorn
+sudo allah log bond_unicorn
+
+
+# 2) enter into the rails console
+bundle exec rails c -e production
+
+
+
+# set authentication key
+
+1) on local machine
+cd
+cat .ssh/id_rsa.pub
+copy the key
+
+
+2) login to server
+vi .ssh/authorized_keys 
+add key at the bottom
+
+:wq
+
+

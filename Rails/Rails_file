@@ -10,7 +10,7 @@ rails new application_name --database=postgresql
 subl config/database.yml
 make sure of dbname and user-password
 
-rake db:create 
+rake db:create
 
 3.
 Gemfile

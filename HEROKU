@@ -14,6 +14,8 @@ from project folder into terminal do :
 
 3.5 manage secret keys
   heroku config:set GITHUB_USERNAME=joesmith
+`
+
 
 4. do the git stuff : 
   git add .
@@ -40,3 +42,42 @@ heroku pg:psql
 
 heroku restart
 heroku open
+
+
+# PULL HEROKU DB INTO LOCAL DEVELOPMENT
+
+
+1. add on database.yml file another db and comment the development one (you dont want to lose your data)
+  # database: myapp_development
+  database: myapp_development_heroku
+
+2. create the new database 
+  rake -T db:create
+
+3. run migrations
+  rake db:migrate
+
+4. create backup of heroku db
+  heroku pgbackups:capture
+
+5. download the backup
+  curl -o latest.dump `heroku pgbackups:url`
+
+6. import the downloaded file into the rails app (replace myuser and mydb to the value of database.yml)
+  pg_restore --verbose --clean --no-acl --no-owner -U myuser -d myapp_development_heroku latest.dump
+
+
+
+# rename the default heroku remote
+
+ git remote rename heroku live
+
+
+# add second heroku remote to existing app
+
+$ git remote add production git@heroku.com:nemi-project.git
+
+
+
+
+

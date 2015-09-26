@@ -30,7 +30,7 @@ DATATYPE
 http://www.postgresql.org/docs/8.4/static/datatype.html
 
 SERIAL4
-SERIAL 
+SERIAL
 which is the difference
 
 INTEGER
@@ -111,7 +111,7 @@ select sum(age) from people;
 PSQL
 
 create user fedetaglia;
-alter role fedetaglia createdb;
+alter role fedetaglia superuser;
 
 
 sudo su - postgres
@@ -121,7 +121,7 @@ alter role fedetaglia password 'password';
 \?              to see help
 \d table_name   describe table
 
-create db 
+create db
 createdb students
 
 psql students <- enter into db

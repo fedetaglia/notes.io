@@ -28,6 +28,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 end
+
 # app/config/intializers.devise.rb
   require "omniauth-facebook"
     config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'], {
@@ -36,7 +37,6 @@ end
   }
   
 # app/models/user.rb
-
 devise :omniauthable, :omniauth_providers => [:facebook]
 
 def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
