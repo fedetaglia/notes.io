@@ -1,0 +1,38 @@
+Migrate from RVM to chruby
+
+1. remove rvm
+
+sudo rm -rf .rvm
+
+2. install chruby
+
+brew install chruby
+brew install ruby-install
+
+
+3.
+
+.zchrc
+remove rvm from this export
+# export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/ImageMagick/bin"
+
+remove this
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+add
+
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+4. install ruby version
+ruby-install ruby 2.2.2
+
+
+in project directory
+
+5. install bundler
+gem install bundler
+
+6. run bundle
+
+bundle install
