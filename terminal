@@ -1,0 +1,13 @@
+# Secure copy
+
+scp ~/localfile.xxx user@server.url:filename.xxx
+
+
+
+# shortcuts
+
+ctrl + r => search previous command
+
+ctrl + c => clear line
+
+
