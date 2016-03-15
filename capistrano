@@ -3,9 +3,12 @@
 
 A) to add the project ssh key
 
+
+ssh-add
+
 ssh-copy-id deploy@websiteurl
 
-B) To deploy 
+B) To deploy
 
 1)
 git push orgin master

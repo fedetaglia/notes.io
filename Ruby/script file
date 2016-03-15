@@ -1,0 +1,37 @@
+# file example of process images with ImageMagick
+
+
+#########
+
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+new_dir = FileUtils::mkdir_p 'processed'
+p new_dir
+p __FILE__
+
+collection = Dir.glob("**/*").select{|f| f.match(/.jpg\z/i)}
+
+p collection
+
+collection.each do |file|
+  p `convert -strip -interlace Plane -gaussian-blur 0.05 -quality 85% \"#{file}\" \"#{file}\"`
+end
+
+##########
+
+# make file executable
+chmod +x filename
+
+# call the file from console.
+# In this case the file has to be in the same folder of the files you want to compress
+filename
+
+
+# __FILE__ gives you the current file name
+# Dir.glob("**") gives all files in current directory
+# Dir.glob("**/*") gives all files with subdirectories
+
+# convert -strip -interlace Plane -gaussian-blur 0.05 -quality 85% \"#{file}\" \"#{file}\"`
+# this process image with ImageMagick

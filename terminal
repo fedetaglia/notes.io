@@ -11,3 +11,9 @@ ctrl + r => search previous command
 ctrl + c => clear line
 
 
+#show file
+cat filename
+
+#edit file
+vim filename
+
