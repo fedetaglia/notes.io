@@ -1,0 +1,45 @@
+# This is Git's r-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+name = Federico Tagliabue
+email = fede.tagliabue@gmail.com
+[push]
+ default = current
+[core]
+ excludesfile = ~/.gitignore
+    editor = vim
+[merge]
+ tool = Filemerge
+[push]
+ default = current
+[mergetool "extMerge"]
+ cmd = extMerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+ trustExitCode = false
+[rerere]
+    enabled = true
+[color]
+ diff = auto
+ status = auto
+ branch = auto
+[color "diff"]
+    meta = blue black bold
+[alias]
+ logg = "log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(magenta)<%an>%Creset' --abbrev-commit --date=relative"
+ signoff = '!git-signoff'
+ praise = "blame"
+ co = checkout
+ ci = commit
+ rb = rebase
+ ac = !git add -A && git commit
+ pp = !sh -c ‘git pull $0 $1 && git push $0 $1’
+ s  = status
+    d = difftool
+[credential]
+    helper = osxkeychain
+[heroku]
+[heroku]
+    account = personal
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
