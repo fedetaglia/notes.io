@@ -17,3 +17,10 @@ cat filename
 #edit file
 vim filename
 
+# fetch process
+
+ps aux | grep ruby
+
+# kill process
+
+kill -9 PID
