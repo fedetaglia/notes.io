@@ -1,0 +1,8 @@
+# Restore Freezed Finder
+
+## once
+killall -kill Finder
+
+## if keeps happening
+rm ~/Library/Preferences/com.apple.finder.plist && killall -HUP Finder
+\

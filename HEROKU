@@ -70,7 +70,7 @@ heroku open
 
 # rename the default heroku remote
 
- git remote rename heroku live
+ git remote rename heroku production
 
 
 # add second heroku remote to existing app

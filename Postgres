@@ -14,3 +14,7 @@ pg_dump -U username -F c -f filename.dump db_name
 
 # restore the dump
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U myuser -d dbname filename.dump
+
+
+
+
