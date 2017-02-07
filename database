@@ -114,6 +114,12 @@ create user fedetaglia;
 alter role fedetaglia superuser;
 
 
+create user develop;
+alter role develop superuser;
+
+create user test;
+alter role test superuser;
+
 sudo su - postgres
 
 alter role fedetaglia password 'password';

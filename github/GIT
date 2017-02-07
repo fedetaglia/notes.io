@@ -55,6 +55,9 @@ ON GITHUB
 
 ------
 
+git remote add develop git@heroku.com:care-pilot.git
+
+
 
 
 git pull upstream master --> from github to my pc

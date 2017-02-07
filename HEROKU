@@ -1,15 +1,15 @@
 how to put online my application with GIT
 
 
-from project folder into terminal do : 
+from project folder into terminal do :
 
 
 1. to initialize a new git repository
-  git init     
+  git init
 
 2. to create a heroku project on heroku server
   heroku create app_name
-3. 
+3.
   heroku keys:add
 
 3.5 manage secret keys
@@ -17,13 +17,13 @@ from project folder into terminal do :
 `
 
 
-4. do the git stuff : 
+4. do the git stuff :
   git add .
   git commit
-  
+
   git push heroku master
 
-5.  
+5.
   heroku addons:add heroku-postgresql
 
 6.  
@@ -51,7 +51,7 @@ heroku open
   # database: myapp_development
   database: myapp_development_heroku
 
-2. create the new database 
+2. create the new database
   rake -T db:create
 
 3. run migrations
@@ -75,9 +75,11 @@ heroku open
 
 # add second heroku remote to existing app
 
-$ git remote add production git@heroku.com:nemi-project.git
+$ git remote add production git@heroku.com:tramselcycer2013.git
 
+git.heroku.com/mysingleconns-staging.git
 
+git remote add develop git@heroku.com:aft-staging.git
 
 
 
