@@ -1,8 +1,8 @@
 # This is Git's r-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
-name = Federico Tagliabue
-email = fede.tagliabue@gmail.com
+  # Please adapt and uncomment the following lines:
+  name = Federico Tagliabue
+  email = fede.tagliabue@gmail.com
 [push]
  default = current
 [core]
@@ -33,7 +33,8 @@ email = fede.tagliabue@gmail.com
  ac = !git add -A && git commit
  pp = !sh -c ‘git pull $0 $1 && git push $0 $1’
  s  = status
-    d = difftool
+ d = difftool
+ frod = !git fetch && git rebase origin/develop
 [credential]
     helper = osxkeychain
 [heroku]

@@ -79,7 +79,10 @@ $ git remote add production git@heroku.com:tramselcycer2013.git
 
 git.heroku.com/mysingleconns-staging.git
 
-git remote add develop git@heroku.com:aft-staging.git
+git remote add staging git@heroku.com:mysingleconns-staging.git
+git remote add staging git@heroku.com:lodex-staging.git
+git remote add production git@heroku.com:tramselcycer2013.git
+
 
 
 
