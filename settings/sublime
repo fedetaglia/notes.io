@@ -1,1 +1,9 @@
-sublime
+// These settings are your friends! and if they are not, they should!
+{
+  "translate_tabs_to_spaces": true,
+  "tab_size": 2,
+  "trim_automatic_white_space": true,
+  "trim_trailing_white_space_on_save": true,
+  "save_on_focus_lost": true,
+  "auto_complete_commit_on_tab": true,
+}
